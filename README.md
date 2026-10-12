@@ -4,6 +4,11 @@ Windows workspace for authorized Blackpine users, with Customer 360, Prospect, F
 
 [Download Blackpine](https://github.com/CBNCloud/Blackpine/releases/latest)
 
+Version **0.8.5** adds subtle per-block loading indicators, app-wide text size
+controls in Settings (80–150%), and a prominent **New version available** banner
+with Update now and Later. It retains the header alignment and active subscription
+duration improvements from 0.8.4.
+
 Each release has **one asset: Blackpine.Setup.exe**. It is the complete Windows x64 installer, including the VPN engine and service. Application source, source archives, build projects and internal documentation are not published here or included in the installer.
 
 ## Install and update
