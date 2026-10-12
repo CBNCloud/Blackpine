@@ -1,28 +1,35 @@
 # Blackpine Desktop
 
-Windows desktop workspace for authorized Blackpine users: Customer 360, Prospect and FS Ticket, with an integrated Fortinet SSL VPN client.
+Windows workspace for authorized Blackpine users, with Customer 360, Prospect, FS Ticket and a built-in Fortinet SSL VPN client.
 
-[Download the latest Windows x64 installer](https://github.com/CBNCloud/Blackpine/releases/latest)
+[Download Blackpine](https://github.com/CBNCloud/Blackpine/releases/latest)
 
-## Install
+Each release has **one asset: Blackpine.Setup.exe**. It is the complete Windows x64 installer, including the VPN engine and service. Application source, source archives, build projects and internal documentation are not published here or included in the installer.
 
-1. Download **Blackpine.Setup.exe** from Releases. Keep the complete installer; it includes dependency licenses, corresponding native sources and the Blackpine rebuild kit.
-2. Run it, approve the Windows administrator prompt, and choose **Install / update**. Microsoft Edge WebView2 Runtime is required.
-3. Open **Blackpine Desktop** from the Start menu. In the VPN dialog enter the **VPN Gateway**, **Port**, username and password provided by your administrator.
-4. After Blackpine establishes its own VPN connection, those details are saved encrypted for your Windows account. Then sign in to Blackpine using your own account.
+## Install and update
 
-The installer is currently **not Authenticode signed**. Windows may show an unknown-publisher or SmartScreen warning. Distribution hashes and signed update metadata serve different purposes from Windows publisher signing.
+Run the installer, approve Windows elevation and choose Install / update. Open Blackpine Desktop from the Start menu. Microsoft Edge WebView2 Runtime is required.
 
-## Updates
+Enter the VPN Gateway, Port and credentials provided by your administrator. Blackpine remembers them securely for your Windows account only after its own VPN connection succeeds. Then sign in to Blackpine. No gateway or custom port is preset. Existing FortiClient connections are left alone.
 
-Starting with 0.8.0, installed Blackpine checks for updates at startup and every six hours while open. Choose **Updates** to check manually. A newer version offers a download; the app verifies a pinned-key signature and the installer hash before opening setup. You approve installation and Windows elevation. Blackpine closes when setup starts; open it again from the Start menu afterward.
+Starting with 0.8.1, installed Blackpine checks for updates at startup and every six hours. The Updates button beside the version label checks manually. The app verifies signed release metadata and the full installer's hash before opening setup; you approve installation and elevation. Earlier versions require one manual upgrade.
 
-Users on 0.7.9 or earlier must install 0.8.0 manually once. Re-enter VPN details on this first upgrade; the old fixed-gateway credential entry is not used. Changing the gateway or port clears the autofilled password. **Forget VPN details** removes the new saved profile. An existing FortiClient connection is left alone and does not count as validation of newly entered VPN details.
+This installer is currently not Authenticode signed, so Windows may show an unknown-publisher or SmartScreen warning. Bundle hardening discourages casual inspection; it does not make a public binary confidential. The client does not grant VPN or Blackpine account authorization.
 
-## Scope
+## Open-source libraries
 
-This is the public distribution repository. Its main branch contains this README; release assets contain the installer, SHA-256 checksums and signed update metadata. Application source and rebuild permissions remain included inside the installer, under `C:\Program Files\Blackpine\notices` after installation. No VPN gateway or custom port is built into this version.
-
-The application preserves reviewed read-only Blackpine routes and does not change VPN gateway authorization. Access remains subject to your organization's active accounts and network controls. Bundle hardening discourages casual binary inspection; the supplied rebuild source remains readable.
-
-Before organization-wide deployment, validate network outage recovery, sleep/resume, session expiry and uninstall in your own environment. See the installed `notices\VPN.md` for validation scope and operating details.
+Required third-party license notices are included in the installer. Corresponding library sources, patches and build recipes are available from the upstream links below. These are third-party libraries, not Blackpine application source. No source archives are hosted in this repository's release assets. Library replacement instructions and applicable permissions accompany the installed third-party notices.
+- [gnutls 3.8.11](https://mirror.math.princeton.edu/pub/fedora-archive/fedora/linux/updates/42/Everything/source/tree/Packages/g/gnutls-3.8.11-3.fc42.src.rpm)
+- [mingw-gcc 14.2.1](https://mirror.math.princeton.edu/pub/fedora-archive/fedora/linux/releases/42/Everything/source/tree/Packages/m/mingw-gcc-14.2.1-4.fc42.src.rpm)
+- [mingw-gettext 0.23.1](https://mirror.math.princeton.edu/pub/fedora-archive/fedora/linux/releases/42/Everything/source/tree/Packages/m/mingw-gettext-0.23.1-2.fc42.src.rpm)
+- [mingw-gmp 6.3.0](https://mirror.math.princeton.edu/pub/fedora-archive/fedora/linux/releases/42/Everything/source/tree/Packages/m/mingw-gmp-6.3.0-2.fc42.src.rpm)
+- [mingw-libtasn1 4.21.0](https://mirror.math.princeton.edu/pub/fedora-archive/fedora/linux/updates/42/Everything/source/tree/Packages/m/mingw-libtasn1-4.21.0-1.fc42.src.rpm)
+- [mingw-libxml2 2.12.9](https://mirror.math.princeton.edu/pub/fedora-archive/fedora/linux/releases/42/Everything/source/tree/Packages/m/mingw-libxml2-2.12.9-2.fc42.src.rpm)
+- [mingw-lz4 1.9.4](https://download.copr.fedorainfracloud.org/results/dwmw2/openconnect/fedora-42-x86_64/Packages/m/mingw-lz4-1.9.4-1.fc41.src.rpm)
+- [mingw-nettle 3.7.2](https://mirror.math.princeton.edu/pub/fedora-archive/fedora/linux/releases/42/Everything/source/tree/Packages/m/mingw-nettle-3.7.2-12.fc42.src.rpm)
+- [mingw-stoken 0.92](https://download.copr.fedorainfracloud.org/results/dwmw2/openconnect/fedora-42-x86_64/Packages/m/mingw-stoken-0.92-3.fc41.src.rpm)
+- [mingw-win-iconv 0.0.8](https://mirror.math.princeton.edu/pub/fedora-archive/fedora/linux/releases/42/Everything/source/tree/Packages/m/mingw-win-iconv-0.0.8-14.fc42.src.rpm)
+- [mingw-winpthreads 12.0.0](https://mirror.math.princeton.edu/pub/fedora-archive/fedora/linux/releases/42/Everything/source/tree/Packages/m/mingw-winpthreads-12.0.0-4.fc42.src.rpm)
+- [mingw-zlib 1.3.2](https://mirror.math.princeton.edu/pub/fedora-archive/fedora/linux/updates/42/Everything/source/tree/Packages/m/mingw-zlib-1.3.2-1.fc42.src.rpm)
+- [openconnect 9.21](https://gitlab.com/openconnect/openconnect/-/archive/v9.21/openconnect-v9.21.tar.gz)
+- [Wintun 0.14.1](https://www.wintun.net/builds/wintun-0.14.1.zip)
