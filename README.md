@@ -10,7 +10,9 @@ Each release has **one asset: Blackpine.Setup.exe**. It is the complete Windows 
 
 Run the installer, approve Windows elevation and choose Install / update. Open Blackpine Desktop from the Start menu. Microsoft Edge WebView2 Runtime is required.
 
-Enter the VPN Gateway, Port and credentials provided by your administrator. Blackpine remembers them securely for your Windows account only after its own VPN connection succeeds. Then sign in to Blackpine. No gateway or custom port is preset. Existing FortiClient connections are left alone.
+On an office LAN or an existing external VPN route that can reach Blackpine, sign in directly; the built-in VPN and FortiClient are optional. Version 0.8.3 checks Blackpine's TCP port before automatically connecting VPN. The green dot shows ping reachability; account sign-in is still required.
+
+When a VPN is needed, enter the VPN Gateway, Port and credentials provided by your administrator. Blackpine remembers them securely for your Windows account only after its own VPN connection succeeds. Then sign in to Blackpine. No gateway or custom port is preset. Existing FortiClient connections are left alone.
 
 Starting with 0.8.1, installed Blackpine checks for updates at startup and every six hours. The Updates button beside the version label checks manually. The app verifies signed release metadata and the full installer's hash before opening setup; you approve installation and elevation. Earlier versions require one manual upgrade.
 
